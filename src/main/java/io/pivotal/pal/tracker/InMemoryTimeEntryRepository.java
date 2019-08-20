@@ -26,7 +26,10 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     @Override
     public TimeEntry update(Long id, TimeEntry timeEntry) {
         TimeEntry timeEnteryToUpdate = timeEntries.get(id);
-        timeEnteryToUpdate.setProjectId(timeEntry.getId());
+        if(timeEnteryToUpdate == null) {
+            return null;
+        }
+        timeEnteryToUpdate.setProjectId(timeEntry.getProjectId());
         timeEnteryToUpdate.setUserId(timeEntry.getUserId());
         timeEnteryToUpdate.setDate(timeEntry.getDate());
         timeEnteryToUpdate.setHours(timeEntry.getHours());
