@@ -68,5 +68,22 @@ public class TimeEntry {
     }
 
     public TimeEntry(){}
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TimeEntry timeEntry = (TimeEntry) o;
+        return hours == timeEntry.hours &&
+                Objects.equals(id, timeEntry.id) &&
+                Objects.equals(projectId, timeEntry.projectId) &&
+                Objects.equals(userId, timeEntry.userId) &&
+                Objects.equals(date, timeEntry.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, projectId, userId, date, hours);
+    }
 
 }
